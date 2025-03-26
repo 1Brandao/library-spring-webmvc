@@ -1,22 +1,19 @@
 package br.com.bpkedu.library_spring_webmvc.domain;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "usuario")
 @Getter
 @Setter
-@Table(name = "livro")
-public class Livro {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titulo;
-    private String autor;
-    private Integer anoPublicacao;
-    private String isbn;
-    private String editora;
-
+    private String nome;
+    private String password;
 }
