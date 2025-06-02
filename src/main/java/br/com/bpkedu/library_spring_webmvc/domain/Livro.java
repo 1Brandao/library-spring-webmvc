@@ -19,4 +19,6 @@ public class Livro {
     private String isbn;
     private String editora;
 
+    @Column(nullable = false)
+    private boolean disponivel = true;
 }

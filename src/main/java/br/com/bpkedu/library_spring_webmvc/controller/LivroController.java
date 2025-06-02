@@ -22,7 +22,7 @@ public class LivroController {
     @GetMapping("/{id:\\d+}")
     public String detalharLivro(@PathVariable Long id, Model model) {
         model.addAttribute("livro", livroService.buscarPorId(id));
-        return "livros/detalhar";
+        return "livros/detalhes"; // MODIFICADO: de "detalhar" para "detalhes"
     }
 
     @GetMapping("/novo")
@@ -39,7 +39,11 @@ public class LivroController {
 
     @GetMapping("/editar/{id:\\d+}")
     public String formularioEditarLivro(@PathVariable Long id, Model model) {
-        model.addAttribute("livro", livroService.buscarPorId(id));
+        Livro livro = livroService.buscarPorId(id);
+        if (livro == null) {
+            return "redirect:/livros/listar";
+        }
+        model.addAttribute("livro", livro);
         return "livros/editar";
     }
 
